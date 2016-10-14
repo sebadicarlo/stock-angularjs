@@ -1,19 +1,16 @@
-<!doctype html>
-<html ng-app="stockApp">
-  <head>
-    <script src="vendor/angular.min.js"></script>
-    
-    <!-- AngularJS -->
-    <script src="js/app.js"></script>
-    <script src="js/filter.js"></script>    
-    <script src="js/stock.js"></script>
-
-    <!-- StyleSheet -->
-    <link rel="stylesheet" href="styles/app.css">
-
-  </head>
-  <body>
-    <h2>Nuevo Productos</h2>
+<p>Buscar : <input type="text" ng-model="searchProduct"></p>
+<div ng-controller="StockController">
+    <data-grid></data-grid>
+    <botonera-directive></botonera-directive>
+</div>  id = 1,
+        }];
+        $scope.products = [
+            { code: 'CP0001', description: 'iPhone 7', price: 700, active: true, notes: 'Great cell phone', vendor: 'Apple', picture: '0001.jpg' },
+            { code: 'CP0002', description: 'Tango 300', price: 5, active: true, notes: 'Very Old cell phone', vendor: 'Motorola', picture: '0002.jpg' },
+            { code: 'CP0003', description: 'Nokia 1100', price: 1000, active: true, notes: 'Very Cool cell phone', vendor: 'Nokia', picture: '0003.jpg' },
+            { code: 'PC0001', description: 'Apple Mackbook Pro', price: 1500, active: true, notes: 'Very Cool notebook', vendor: 'Apple', picture: '0004.jpg' }
+        ];
+    });    <h2>Nuevo Productos</h2>
 
     <div ng-controller="StockController">
         <form name="productForm" novalidate>
@@ -25,7 +22,18 @@
                 <span ng-show="productForm.code.$error.required">Code is required.</span>
                 </span>
             </p>
-
+            <p>
+                Descripcion:<br>
+                <input type="text" name="descript" ng-model="descript" required>
+                <span style="color:red" ng-show="productForm.code.$dirty && productForm.code.$invalid">
+                <span ng-show="productForm.code.$error.required">Code is required.</span>
+                </span>
+            </p>
+            <p>
+                Fabricante:<br>
+                <select name="vendor" ng-model="vendor" ng-options="item as item.name for item in vendors track by item.id"></select>
+               
+            </p>
             <p>
                 <input type="submit" ng-disabled="productForm.code.$dirty && productForm.code.$invalid">
             </p>
