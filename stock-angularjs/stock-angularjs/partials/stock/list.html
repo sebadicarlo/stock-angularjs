@@ -1,0 +1,25 @@
+<div ng-controller="StockController">
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Codigo</th>
+                    <th>Descripcion</th>
+                    <th>Precio</th>
+                    <th>Foto</th>
+                    <th>Notas</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!--<tr ng-repeat="product in products | filter : searchProduct | orderBy:'price'">-->
+                <tr ng-repeat="product in products">
+                    <td>{{product.code | productCode}}</td>
+                    <td>{{product.description | uppercase}}</td>
+                    <td>{{product.price | currency}}</td>
+                    <td><img ng-src="img/{{product.picture}}" width="100px" height="100px"></td>
+                    <td>{{product.notes | reverse}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <data-grid></data-grid>
+        <botonera-directive></botonera-directive>
+    </div>
